@@ -32,8 +32,12 @@ nsch = pd.read_csv(csvfname,  header=None,
 #reorder and create columns.  
 nsch=nsch.reindex(columns=['H1',colcode,'00',cname,today,type,'I','d1','d2','d3','d4','d5'], copy=True,fill_value='')
 
-#only keeps the first character of the middle name.
+#truncate values to ensure they do not exceed NSCH max limit.
 nsch[cname]=nsch[cname].str.slice(0,1)
+nsch['00']=nsch['00'].str.slice(0,19)
+nsch[today]=nsch[today].str.slice(0,19)
+nsch[type]=nsch[type].str.slice(0,7)
+nsch['d5']=nsch['d5'].str.slice(0,49)
 
 #defines variables. 
 nsch[['H1',colcode,'d1','d2','d3','d4']]=[['D1',' ',today,lookback,colcode,'00']]

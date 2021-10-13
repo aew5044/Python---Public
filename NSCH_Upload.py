@@ -11,7 +11,7 @@ import datetime
 import pandas as pd
 import os
 
-colcode='004845'
+colcode='XX4845'
 cname='Wilson Community College'
 type='SE'
 lookback='19940101'

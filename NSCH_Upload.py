@@ -60,6 +60,14 @@ out=nsch.append(pd.DataFrame(data=d))
 #exports the data to a txt file and recodes the headers.
 out.to_csv('upload'+'_'+str(today)+'.txt', header=['H1',colcode,'00',cname,today,type,'I',' ',' ',' ',' ',' '], index=False, sep='\t', na_rep='')
 
+docs=[colcode, cname, type, lookback, csvfname]
+
+filename='Parameters used in the NSCH upload file on '+str(today)+'.txt'
+
+with open(filename,'w') as file_object:
+    for doc in docs:
+        file_object.write(doc+'\t')
+
 
 
 
